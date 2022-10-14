@@ -5,7 +5,7 @@ import image from "../../assets/easy.png";
 const HCWH = () => {
   return (
     <section className="hcwh-section">
-      <h2 className="secondary-title">How can we help?</h2>
+      <h2 className="secondary-title align-center">How can we help?</h2>
       <div className="hcwh-container">
         <div className="hcwh-content">
           <div className="hcwh-icon-container">

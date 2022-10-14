@@ -12,12 +12,12 @@ const Navigation = () => {
       </div>
       <ul className="nav-links">
         <li className="nav-links-list">
-          <a className="nav-links-items" href="/">
+          <a className="nav-links-items" href="#infographic">
             Infographic
           </a>
         </li>
         <li className="nav-links-list">
-          <a className="nav-links-items" href="/">
+          <a className="nav-links-items" href="#budgetting">
             Budgeting Application
           </a>
         </li>

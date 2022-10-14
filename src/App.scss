@@ -3,3 +3,35 @@
 .App {
   margin: 3rem 5rem;
 }
+
+.secondary-title {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  padding-top: 1.5rem;
+}
+
+.tertiary-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active,
+  &:focus {
+    color: grey;
+  }
+}
+
+.align-center {
+  text-align: center;
+}
+
+.line {
+  margin: 10rem auto;
+  border-style: dotted;
+  border-top: 12px dotted black;
+  width: 8%;
+}

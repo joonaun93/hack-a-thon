@@ -1,0 +1,39 @@
+.infographic {
+  &-section {
+    height: 100vh;
+    margin-top: 3rem;
+  }
+
+  &-section-container {
+    display: flex;
+    padding: 3rem;
+  }
+
+  &-sidetab-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    overflow: scroll;
+  }
+
+  &-sidetab-card {
+    margin-bottom: 3rem;
+  }
+
+  &-main-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 0 4rem;
+
+    &-primary {
+      height: 80%;
+    }
+
+    &-secondary {
+      height: 20%;
+    }
+  }
+}
