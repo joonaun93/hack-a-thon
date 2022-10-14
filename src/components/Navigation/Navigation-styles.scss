@@ -1,0 +1,38 @@
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .icon {
+    width: 5rem;
+    height: 5rem;
+
+    &-title {
+      display: inline-block;
+    }
+
+    &-container {
+      margin-left: 3rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+    &-list {
+      margin-right: 3rem;
+      text-transform: uppercase;
+    }
+
+    &-items {
+      text-decoration: none;
+      color: inherit;
+      font-size: 2rem;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.landing {
+  &-section {
+    height: 100vh;
+  }
+
+  &-container {
+    display: flex;
+    padding: 3rem 0;
+  }
+
+  &-content {
+    padding: 3rem;
+    width: 50%;
+  }
+
+  &-title {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+  }
+
+  &-tagline {
+    font-size: 3rem;
+    margin-bottom: 6rem;
+  }
+
+  &-carousel {
+    width: 50%;
+    padding: 3rem;
+  }
+}
