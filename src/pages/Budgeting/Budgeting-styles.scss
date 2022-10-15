@@ -24,9 +24,21 @@
     @extend .budgeting-unactive-component-container;
     width: 50rem;
     margin: 0 2rem 0 4rem;
+    position: relative;
   }
 
   &-chart-container {
     padding: 0rem 4rem;
+    margin-bottom: 3rem;
+  }
+
+  &-main-advice {
+    text-align: center;
+    border: 1px solid black;
+    margin: 0 4rem;
+
+    h2 {
+      margin: 1rem 0;
+    }
   }
 }

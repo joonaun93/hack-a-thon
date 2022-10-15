@@ -7,7 +7,7 @@ const BudgetItem = ({ children, index, name }) => {
   const { budgetState, setBudgetState } = useContext(BudgetContext);
   const { startPosition, enterPosition } = budgetState;
 
-  const { setChartData } = useContext(ChartDataContext);
+  const { chartData, setChartData } = useContext(ChartDataContext);
 
   const dragItem = useRef();
   //   const dragOverItem = useRef();
@@ -42,8 +42,15 @@ const BudgetItem = ({ children, index, name }) => {
 
   const onChangeHandler = (e) => {
     const inputValue = e.target.value;
-    const inputName = e.target.getAttribute("name");
-    console.log(inputName, inputValue);
+    let inputName = e.target.getAttribute("name");
+
+    if (inputName.includes(" ")) {
+      inputName =
+        e.target.getAttribute("name").split(" ")[0] +
+        e.target.getAttribute("name").split(" ")[1];
+    }
+
+    setChartData({ ...chartData, [inputName]: inputValue });
   };
 
   if (name === "active") {
@@ -79,11 +86,19 @@ const BudgetItem = ({ children, index, name }) => {
             <div>
               <label className="budget-components-label">RM</label>
               <input
-                onChange={onChangeHandler}
+                onChange={(e) => {
+                  onChangeHandler(e);
+                }}
                 className="budget-components-input"
                 type="number"
                 name={children}
                 placeholder="0.00"
+                value={
+                  children === "Fixed Expenses" ||
+                  children === "Variable Expenses"
+                    ? chartData[children.split(" ")[0] + children.split(" ")[1]]
+                    : chartData[children]
+                }
               ></input>
             </div>
           </div>

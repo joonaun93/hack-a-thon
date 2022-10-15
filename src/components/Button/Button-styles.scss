@@ -6,3 +6,15 @@
   border: none;
   border-radius: 5px;
 }
+
+.bottom-left {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
