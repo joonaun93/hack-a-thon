@@ -12,7 +12,7 @@ export const BudgetContext = createContext({
 
 export const BudgetProvider = ({ children }) => {
   const [budgetState, setBudgetState] = useState({
-    unactive: ["Investment", "Loan", "Inflation"],
+    unactive: ["Investment", "Inflation"],
     active: ["Goal", "Income", "Fixed Expenses", "Variable Expenses"],
     enterPosition: "",
     startPosition: "",

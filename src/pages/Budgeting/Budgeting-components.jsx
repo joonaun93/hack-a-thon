@@ -27,49 +27,57 @@ const Budgeting = () => {
     VariableExpenses,
     toReachGoal,
     negative,
+    Inflation,
+    Investment,
   } = chartData;
 
   let i = 0;
+  const today = new Date();
+  const expenses = Number(FixedExpenses) + Number(VariableExpenses);
+  const monthlySaved = Number(Income - expenses);
+  const realRates =
+    1 +
+    Number(
+      active.includes("Investment")
+        ? Investment
+        : 0 - active.includes("Inflation")
+        ? Inflation
+        : 0
+    ) /
+      1200;
+  const yyyy = today.getFullYear();
+  const mm = today.getMonth() + 1;
+  const dd = today.getDate();
+  let newSavingsData = [];
 
   const onClickHandler = () => {
-    const today = new Date();
-    const monthlySaved = Income - FixedExpenses - VariableExpenses;
-    const yyyy = today.getFullYear();
-    const mm = today.getMonth() + 1;
-    const dd = today.getDate();
-    let newSavingsData = [];
-
-    try {
-      if (Income > 0 && monthlySaved > 0) {
-        for (
-          let netWorth = 0;
-          netWorth < Goal;
-          netWorth = netWorth + monthlySaved
-        ) {
-          newSavingsData.push({ x: `${yyyy}-${mm + i}-${dd}`, y: netWorth });
-          i++;
-        }
-        newSavingsData.push({
-          x: `${yyyy}-${mm + i}-${dd}`,
-          y: monthlySaved * i,
-        });
-
-        setChartData({
-          ...chartData,
-          toReachGoal: i,
-          savingsData: newSavingsData,
-          negative: false,
-        });
+    if (Number(Income) > 0 && monthlySaved > 0) {
+      for (
+        let netWorth = 0;
+        netWorth < Number(Goal);
+        netWorth = netWorth * realRates + monthlySaved
+      ) {
+        newSavingsData.push({ x: `${yyyy}-${mm + i}-${dd}`, y: netWorth });
+        i++;
       }
+      newSavingsData.push({
+        x: `${yyyy}-${mm + i}-${dd}`,
+        y: monthlySaved * i,
+      });
 
-      if (Income > 0 && monthlySaved >= Income) {
-        setChartData({
-          ...chartData,
-          negative: true,
-        });
-      }
-    } catch (err) {
-      console.log(err);
+      setChartData({
+        ...chartData,
+        toReachGoal: i,
+        savingsData: newSavingsData,
+        negative: false,
+      });
+    }
+
+    if (Number(Income) > 0 && expenses >= Income) {
+      setChartData({
+        ...chartData,
+        negative: true,
+      });
     }
   };
 
@@ -79,9 +87,8 @@ const Budgeting = () => {
       Income: 0,
       FixedExpenses: 0,
       VariableExpenses: 0,
-      Investment: 0,
-      Loan: 0,
-      Inflation: 0,
+      Investment: 7,
+      Inflation: 3,
       toReachGoal: 0,
       savingsData: [],
       negative: false,

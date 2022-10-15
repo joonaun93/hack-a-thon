@@ -56,7 +56,6 @@ const BudgetItem = ({ children, index, name }) => {
   if (name === "active") {
     switch (children) {
       case "Investment":
-      case "Loan":
       case "Inflation":
         return (
           <div
@@ -68,7 +67,20 @@ const BudgetItem = ({ children, index, name }) => {
             onDragEnd={dragEndHandler}
             draggable
           >
-            {children}
+            <span className="budget-components-title">{`${children}`}</span>
+            <div>
+              <label className="budget-components-label">%</label>
+              <input
+                onChange={(e) => {
+                  onChangeHandler(e);
+                }}
+                className="budget-components-input"
+                type="number"
+                name={children}
+                placeholder="%"
+                value={chartData[children]}
+              ></input>
+            </div>
           </div>
         );
       default:
