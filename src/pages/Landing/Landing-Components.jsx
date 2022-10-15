@@ -16,7 +16,7 @@ const Landing = () => {
             This is the Landing tagline. There will be some text here in the
             future. At the moment, it is currently a placeholder.
           </p>
-          <Button>Let's start your journey now!</Button>
+          <Button href="#infographic">Let's start your journey now!</Button>
         </div>
         <div className="landing-carousel">
           <CarouselComponent />

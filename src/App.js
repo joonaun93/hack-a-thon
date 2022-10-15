@@ -1,6 +1,6 @@
 import Landing from "./pages/Landing/Landing-Components";
 import Infographic from "./pages/Infographic/Infographic-components";
-import Budgetting from "./pages/Budgetting/Budgetting-components";
+import Budgeting from "./pages/Budgeting/Budgeting-components";
 
 import "./App.scss";
 
@@ -10,7 +10,8 @@ function App() {
       <Landing />
       <hr className="line" />
       <Infographic />
-      <Budgetting />
+      <hr className="line2" />
+      <Budgeting />
     </div>
   );
 }

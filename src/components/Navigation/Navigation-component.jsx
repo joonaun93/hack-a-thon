@@ -17,7 +17,7 @@ const Navigation = () => {
           </a>
         </li>
         <li className="nav-links-list">
-          <a className="nav-links-items" href="#budgetting">
+          <a className="nav-links-items" href="#budgeting">
             Budgeting Application
           </a>
         </li>
