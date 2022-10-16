@@ -35,6 +35,13 @@
 
     &-secondary {
       height: 20%;
+
+      &-results {
+        padding: 3rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        text-align: left;
+      }
     }
   }
 }

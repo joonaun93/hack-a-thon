@@ -1,7 +1,23 @@
 import "./Infographic-content-styles.scss";
+import { useContext } from "react";
+import { GameContext } from "../../context/GameContext-component";
 
 const InfographicContent = ({ state }) => {
-  const onSubmitHandler = (e) => {};
+  const { setGameData } = useContext(GameContext);
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const correctValue = e.target.querySelectorAll('[value="correct"]');
+
+    const array = [...correctValue];
+
+    const numberOfCorrect = array.filter((item) => {
+      return item.checked === true;
+    }).length;
+
+    setGameData(numberOfCorrect);
+  };
 
   switch (state) {
     case "budgetting":

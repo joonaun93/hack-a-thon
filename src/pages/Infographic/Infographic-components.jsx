@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { InfographicContext } from "../../context/InfographicContext-component";
+import { GameContext } from "../../context/GameContext-component";
 
 import Button from "../../components/Button/Button-component";
 
@@ -8,6 +9,7 @@ import InfographicContent from "../../components/Infographic-content/Infographic
 
 const Infographic = () => {
   const { infoClicked, setInfoClicked } = useContext(InfographicContext);
+  const { gameData } = useContext(GameContext);
 
   const onClickHandler = (e) => {
     setInfoClicked(e.target.getAttribute("name"));
@@ -72,7 +74,11 @@ const Infographic = () => {
           <div className="infographic-main-container-primary">
             <InfographicContent state={infoClicked} />
           </div>
-          <div className="infographic-main-container-secondary"></div>
+          <div className="infographic-main-container-secondary">
+            <h3 className="infographic-main-container-secondary-results">
+              {gameData < 0 ? null : `You got ${gameData} out of 2 correct!`}
+            </h3>
+          </div>
         </div>
       </div>
     </section>
