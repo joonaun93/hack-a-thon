@@ -116,7 +116,7 @@ const Budgeting = () => {
           name="unactive"
           className="budgeting-unactive-component-container"
         >
-          <h2 className="tertiary-title">UNACTIVE COMPONENTS</h2>
+          <h2 className="budgeting-secondary-title">UNACTIVE COMPONENTS</h2>
           {unactive.length > 0
             ? unactive.map((item, index) => (
                 <BudgetItem
@@ -135,7 +135,7 @@ const Budgeting = () => {
           name="active"
           className="budgeting-active-component-container"
         >
-          <h2 className="tertiary-title">ACTIVE COMPONENTS</h2>
+          <h2 className="budgeting-secondary-title">ACTIVE COMPONENTS</h2>
 
           {active.length > 0
             ? active.map((item, index) => (
@@ -170,7 +170,7 @@ const Budgeting = () => {
             <MyChart />
           </div>
           <div className="budgeting-main-advice">
-            <h2 className="tertiary-title">
+            <h2 className="budgeting-secondary-title">
               How Long Will It Take to Reach Your goal?
             </h2>
             {reset ? (

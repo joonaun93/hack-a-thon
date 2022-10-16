@@ -11,6 +11,10 @@ const Footer = () => {
           <img className="icon" src={image} alt="icon" />
         </a>
       </div>
+
+      <div className="footer-copyright">
+        Designed and built by Edmund Koh for Hack-A-Tech 2022
+      </div>
       <div className="details-container">
         <ul className="footer-list">
           <h3>Attribution</h3>

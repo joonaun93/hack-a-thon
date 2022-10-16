@@ -20,10 +20,10 @@ const Landing = () => {
           </p>
           <div className="landing-description-container">
             <p className="landing-description">
-              Personal financial management is made complicated with the amount
-              of overwhelming resources available nowadays. As a result, most
-              put off learning. The statistics of the financial situation shown
-              on the right paints a similar picture.
+              Financial management is made complicated with the overwhelming
+              resources available causing most individuals to put off learning.
+              The statistics of the financial demographic in Malaysia shows a
+              similar picture.
             </p>
           </div>
 
