@@ -1,4 +1,9 @@
 .hcwh {
+  &-section {
+    padding: 2rem 0;
+    background-color: white;
+  }
+
   &-container {
     display: flex;
     flex-direction: row;
@@ -9,8 +14,11 @@
     display: flex;
     padding: 2rem;
     margin: 3rem;
-    border: 1px solid black;
+    // border: 10px solid #ffde7d;
     border-radius: 10px;
+    background-color: black;
+    width: 40rem;
+    text-align: left;
   }
 
   &-icon {
@@ -25,5 +33,8 @@
   &-description {
     font-size: 1.6rem;
     width: 80%;
+    font-weight: 900;
+    color: white;
+    padding: 0.5rem 1.5rem;
   }
 }

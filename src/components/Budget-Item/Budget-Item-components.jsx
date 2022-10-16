@@ -3,7 +3,7 @@ import { useContext, useRef } from "react";
 import { BudgetContext } from "../../context/BudgetContext-component";
 import { ChartDataContext } from "../../context/ChartDataContext-component";
 
-const BudgetItem = ({ children, index, name }) => {
+const BudgetItem = ({ children, index, name, item }) => {
   const { budgetState, setBudgetState } = useContext(BudgetContext);
   const { startPosition, enterPosition } = budgetState;
 
@@ -30,7 +30,7 @@ const BudgetItem = ({ children, index, name }) => {
 
       const dragItemContent = newStartContainer.splice(dragItem.current, 1);
 
-      newEnterContainer.push(dragItemContent);
+      newEnterContainer.push(...dragItemContent);
 
       setBudgetState({
         ...budgetState,
@@ -53,86 +53,53 @@ const BudgetItem = ({ children, index, name }) => {
     setChartData({ ...chartData, [inputName]: inputValue });
   };
 
-  if (name === "active") {
-    switch (children) {
-      case "Investment":
-      case "Inflation":
-        return (
-          <div
-            className="budget-components"
-            name={children}
-            onDragStart={(e) => {
-              dragStartHandler(e, index);
-            }}
-            onDragEnd={dragEndHandler}
-            draggable
-          >
-            <span className="budget-components-title">{`${children}`}</span>
-            <div>
-              <label className="budget-components-label">%</label>
-              <input
-                onChange={(e) => {
-                  onChangeHandler(e);
-                }}
-                className="budget-components-input"
-                type="number"
-                name={children}
-                placeholder="%"
-                value={chartData[children]}
-              ></input>
-            </div>
-          </div>
-        );
-      default:
-        return (
-          <div
-            className="budget-components"
-            name={children}
-            onDragStart={(e) => {
-              dragStartHandler(e, index);
-            }}
-            onDragEnd={dragEndHandler}
-            draggable
-          >
-            <span className="budget-components-title">{`${children}`}</span>
-            <div>
-              <label className="budget-components-label">RM</label>
-              <input
-                onChange={(e) => {
-                  onChangeHandler(e);
-                }}
-                className="budget-components-input"
-                type="number"
-                name={children}
-                placeholder="0.00"
-                value={
-                  children === "Fixed Expenses" ||
-                  children === "Variable Expenses"
-                    ? chartData[children.split(" ")[0] + children.split(" ")[1]]
-                    : chartData[children]
-                }
-              ></input>
-            </div>
-          </div>
-        );
-    }
-  }
-
-  if (name === "unactive") {
-    return (
-      <div
-        className="budget-components"
-        name={children}
-        onDragStart={(e) => {
-          dragStartHandler(e, index);
-        }}
-        onDragEnd={dragEndHandler}
-        draggable
-      >
-        {children}
+  return name === "active" ? (
+    <div
+      className="budget-components"
+      name={children}
+      onDragStart={(e) => {
+        dragStartHandler(e, index);
+      }}
+      onDragEnd={dragEndHandler}
+      draggable
+    >
+      <span className="budget-components-title">{`${children}`}</span>
+      <div>
+        <label className="budget-components-label">
+          {
+            // eslint-disable-next-line
+            children == "Investment" || children == "Inflation" ? "%" : "RM"
+          }
+        </label>
+        <input
+          onChange={(e) => {
+            onChangeHandler(e);
+          }}
+          className="budget-components-input"
+          type="number"
+          name={children}
+          placeholder="0"
+          value={
+            children === "Fixed Expenses" || children === "Variable Expenses"
+              ? chartData[children.split(" ")[0] + children.split(" ")[1]]
+              : chartData[children]
+          }
+        ></input>
       </div>
-    );
-  }
+    </div>
+  ) : (
+    <div
+      className="budget-components"
+      name={children}
+      onDragStart={(e) => {
+        dragStartHandler(e, index);
+      }}
+      onDragEnd={dragEndHandler}
+      draggable
+    >
+      <span className="budget-components-title">{`${children}`}</span>
+    </div>
+  );
 };
 
 export default BudgetItem;

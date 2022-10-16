@@ -3,20 +3,33 @@ import CarouselComponent from "../../components/Carousel/Carousel-component";
 import HCWH from "../../components/HCWH/HCWH.component";
 
 import "./Landing-styles.scss";
-import Button from "../../components/Button/Button-component";
 
 const Landing = () => {
   return (
-    <section className="landing-section">
+    <section id="Landing" className="landing-section">
       <Navigation />
       <div className="landing-container">
         <div className="landing-content">
-          <h1 className="landing-title">This is the Landing Title</h1>
+          <h1 className="landing-title">
+            Feeling Frustrated with Personal Finance?
+          </h1>
           <p className="landing-tagline">
-            This is the Landing tagline. There will be some text here in the
-            future. At the moment, it is currently a placeholder.
+            Too much <span className="landing-tagline-span">to learn,</span> too
+            little
+            <span className="landing-tagline-span"> time</span>
           </p>
-          <Button href="#infographic">Let's start your journey now!</Button>
+          <div className="landing-description-container">
+            <p className="landing-description">
+              Personal financial management is made complicated with the amount
+              of overwhelming resources available nowadays. As a result, most
+              put off learning. The statistics of the financial situation shown
+              on the right paints a similar picture.
+            </p>
+          </div>
+
+          <a className="button-main-secondary" href="#infographic">
+            Let's start your journey now!
+          </a>
         </div>
         <div className="landing-carousel">
           <CarouselComponent />

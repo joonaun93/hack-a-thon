@@ -12,8 +12,8 @@ const HCWH = () => {
             <img className="hcwh-icon" src={image} alt="icon1" />
           </div>
           <p className="hcwh-description">
-            How can we help paragraph 1. This is a placeholder for future
-            content.
+            Break down large impact concepts into an easy to consume interactive
+            infographic.
           </p>
         </div>
         <div className="hcwh-content">
@@ -21,8 +21,8 @@ const HCWH = () => {
             <img className="hcwh-icon" src={image} alt="icon2" />
           </div>
           <p className="hcwh-description">
-            How can we help paragraph 1. This is a placeholder for future
-            content.
+            Create an awareness for the user and redirect them to focus on the
+            big impact items.
           </p>
         </div>
         <div className="hcwh-content">
@@ -30,8 +30,8 @@ const HCWH = () => {
             <img className="hcwh-icon" src={image} alt="icon1" />
           </div>
           <p className="hcwh-description">
-            How can we help paragraph 1. This is a placeholder for future
-            content.
+            A simple budgeting simulator to help them immediately take action in
+            their life.
           </p>
         </div>
       </div>

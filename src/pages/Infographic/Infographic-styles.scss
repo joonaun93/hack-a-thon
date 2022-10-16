@@ -2,6 +2,7 @@
   &-section {
     height: 100vh;
     margin-top: 3rem;
+    background-color: #ffde7d;
   }
 
   &-section-container {
@@ -35,5 +36,23 @@
     &-secondary {
       height: 20%;
     }
+  }
+}
+
+.tertiary-title {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  transition: 0.5s all;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateX(2rem);
+  }
+
+  &:active,
+  &:focus {
+    color: grey;
   }
 }

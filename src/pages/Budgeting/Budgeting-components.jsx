@@ -29,45 +29,51 @@ const Budgeting = () => {
     negative,
     Inflation,
     Investment,
+    reset,
   } = chartData;
 
-  let i = 0;
+  let months = 0;
   const today = new Date();
   const expenses = Number(FixedExpenses) + Number(VariableExpenses);
   const monthlySaved = Number(Income - expenses);
-  const realRates =
-    1 +
-    Number(
-      active.includes("Investment")
-        ? Investment
-        : 0 - active.includes("Inflation")
-        ? Inflation
-        : 0
-    ) /
-      1200;
-  const yyyy = today.getFullYear();
-  const mm = today.getMonth() + 1;
-  const dd = today.getDate();
+  const rates =
+    Number(active.includes("Investment") ? Investment : 0) -
+    Number(active.includes("Inflation") ? Inflation : 0);
+  const realRates = Math.pow(1 + rates * 0.01, 1 / 12);
+
+  let yyyy = today.getFullYear();
+  let mm = today.getMonth() + 1;
+  // let dd = today.getDate();
   let newSavingsData = [];
 
   const onClickHandler = () => {
+    setChartData({
+      ...chartData,
+      savingsData: [],
+      reset: false,
+    });
+
     if (Number(Income) > 0 && monthlySaved > 0) {
       for (
         let netWorth = 0;
         netWorth < Number(Goal);
         netWorth = netWorth * realRates + monthlySaved
       ) {
-        newSavingsData.push({ x: `${yyyy}-${mm + i}-${dd}`, y: netWorth });
-        i++;
+        if (mm + 1 === 13) {
+          mm = 1;
+          yyyy = yyyy + 1;
+        } else {
+          mm = mm + 1;
+        }
+
+        newSavingsData.push({ x: `${mm}/${yyyy}`, y: netWorth });
+
+        months++;
       }
-      newSavingsData.push({
-        x: `${yyyy}-${mm + i}-${dd}`,
-        y: monthlySaved * i,
-      });
 
       setChartData({
         ...chartData,
-        toReachGoal: i,
+        toReachGoal: months,
         savingsData: newSavingsData,
         negative: false,
       });
@@ -90,7 +96,13 @@ const Budgeting = () => {
       Investment: 7,
       Inflation: 3,
       toReachGoal: 0,
-      savingsData: [],
+      reset: true,
+      savingsData: [
+        { x: `10/2022`, y: 2000 },
+        { x: `11/2022`, y: 1000 },
+        { x: `12/2022`, y: 3000 },
+        { x: `1/2023`, y: 500 },
+      ],
       negative: false,
     });
   };
@@ -107,7 +119,12 @@ const Budgeting = () => {
           <h2 className="tertiary-title">UNACTIVE COMPONENTS</h2>
           {unactive.length > 0
             ? unactive.map((item, index) => (
-                <BudgetItem key={index} index={index} name={"unactive"}>
+                <BudgetItem
+                  item={item}
+                  key={index}
+                  index={index}
+                  name={"unactive"}
+                >
                   {item}
                 </BudgetItem>
               ))
@@ -122,7 +139,12 @@ const Budgeting = () => {
 
           {active.length > 0
             ? active.map((item, index) => (
-                <BudgetItem key={index} index={index} name={"active"}>
+                <BudgetItem
+                  key={index}
+                  index={index}
+                  name={"active"}
+                  item={item}
+                >
                   {item}
                 </BudgetItem>
               ))
@@ -151,14 +173,25 @@ const Budgeting = () => {
             <h2 className="tertiary-title">
               How Long Will It Take to Reach Your goal?
             </h2>
-            <p>
-              {negative
-                ? `You won't reach your goals as your monthly income is lower than your fixed and variable expenses combined!`
-                : `It takes ${toReachGoal} months to reach your goals`}
-            </p>
+            {reset ? (
+              <p className="budgeting-main-advice-paragraph">
+                Try inputting some numbers into the active rows in the left hand
+                side! You can also drag and drop the "Investment" and
+                "Inflation" items from the unactive column to add some input to
+                it! They are initialized with 7% and 3% respestively to reflect
+                real world numbers but feel free to play around with it.
+              </p>
+            ) : (
+              <p className="budgeting-main-advice-paragraph">
+                {negative
+                  ? `You won't reach your goals as your monthly income is lower than your fixed and variable expenses combined!`
+                  : `It takes ${toReachGoal} months to reach your goal. You can try to reduce your fixed expenses of RM${FixedExpenses} and variable expenses of RM${VariableExpenses} or increase your income of RM${Income} to reach your goal earlier.`}
+              </p>
+            )}
           </div>
         </div>
       </div>
+      {/* <div className="footer"></div> */}
     </section>
   );
 };

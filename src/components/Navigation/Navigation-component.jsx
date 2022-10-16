@@ -1,11 +1,10 @@
-import { Nav } from "react-bootstrap";
 import "./Navigation-styles.scss";
 
 import image from "../../assets/wealth.jpg";
 
 const Navigation = () => {
   return (
-    <Nav className="nav-container">
+    <nav className="nav-container">
       <div className="icon-container">
         <h1 className="icon-title">BAJET</h1>
         <img className="icon" src={image} alt="icon" />
@@ -22,7 +21,7 @@ const Navigation = () => {
           </a>
         </li>
       </ul>
-    </Nav>
+    </nav>
   );
 };
 

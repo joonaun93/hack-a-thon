@@ -1,5 +1,8 @@
 .chart {
-  border: 1px solid rgb(0, 0, 0);
+  // border: 1px solid rgb(0, 0, 0);
   width: 65rem;
   background-size: cover;
+  background-color: lighten(#e8e8e8, 6%);
+  margin-top: 3rem;
+  border-radius: 15px;
 }

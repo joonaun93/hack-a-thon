@@ -1,20 +1,76 @@
 .button-main {
   font-size: 1.6rem;
   padding: 1rem 2rem;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.85);
   color: white;
   border: none;
   border-radius: 5px;
+  font-weight: 600;
+  transition: 0.2s all;
+  box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.1);
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.6);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0rem 2rem rgba(0, 0, 0, 0.4);
+  }
+
+  &-secondary {
+    @extend .button-main;
+    display: inline-block;
+    text-decoration: none;
+    &:hover {
+      transform: translateY(-3px);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 0rem 3rem rgba(0, 0, 0, 0.6);
+    }
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 0rem 2rem rgba(0, 0, 0, 0.4);
+    }
+  }
 }
 
 .bottom-left {
   position: absolute;
   bottom: 1.5rem;
   left: 1.5rem;
+  font-weight: 600;
+  transition: 0.2s all;
+  &:hover {
+    transform: translateY(-3px);
+  }
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0rem 2rem rgba(0, 0, 0, 0.4);
+  }
 }
 
 .bottom-right {
   position: absolute;
   bottom: 1.5rem;
   right: 1.5rem;
+  font-weight: 600;
+  transition: 0.5s all;
+  &:hover {
+    transform: translateY(-3px);
+  }
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0rem 2rem rgba(0, 0, 0, 0.4);
+  }
+}
+
+.landing-button {
+  font-size: inherit;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+  }
 }

@@ -2,6 +2,10 @@
 
 .App {
   margin: 3rem 5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+  position: relative;
+  overflow: hidden;
 }
 
 .secondary-title {
@@ -9,20 +13,7 @@
   text-transform: uppercase;
   margin-bottom: 2rem;
   padding-top: 1.5rem;
-}
-
-.tertiary-title {
-  font-size: 2rem;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active,
-  &:focus {
-    color: grey;
-  }
+  font-weight: 900;
 }
 
 .align-center {
@@ -30,15 +21,15 @@
 }
 
 .line {
-  margin: 10rem auto;
-  border-style: dotted;
+  margin: 4rem auto 8rem auto;
   border-top: 8px dotted black;
   width: 3%;
+  position: relative;
+  z-index: 10;
 }
 
 .line2 {
-  margin: 3rem auto 10rem auto;
-  border-style: dotted;
+  margin: 8rem auto 10rem auto;
   border-top: 8px dotted black;
   width: 3%;
 }

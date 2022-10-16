@@ -13,19 +13,30 @@ const MyChart = () => {
     chartData: { savingsData },
   } = useContext(ChartDataContext);
 
+  // const date = new Date();
+  // const yearsToGoal = Math.ceil(toReachGoal / 12);
+
+  // const year = date.getFullYear();
+  // const month = date.getMonth() + 1;
+  // const day = date.getDate();
+
+  // const max = `${year + yearsToGoal}-${month}-${day}`;
+
   const data = {
-    labels: [],
     datasets: [
       {
         data: savingsData,
-        fill: false,
+        // fill: false,
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
         borderColor: "rgba(0,0,0,0.5)",
         tension: 0.4,
+        borderWidth: 1,
       },
     ],
   };
 
   const options = {
+    elements: { point: { pointStyle: "cross" } },
     plugins: {
       legend: { display: false },
       title: {
@@ -39,26 +50,54 @@ const MyChart = () => {
       },
       x: {
         title: { display: true, text: "Date" },
-
-        type: "time",
-        time: {
-          unit: "week",
-          unitStepSize: 1,
-          displayFormats: {
-            millisecond: "dd MMM yy",
-            second: "dd MMM yy",
-            minute: "dd MMM yy",
-            hour: "dd MMM yy",
-            day: "dd MMM yy",
-            week: "dd MMM yy",
-            month: "dd MMM yy",
-            quarter: "dd MMM yy",
-            year: "dd MMM yy",
-          },
-        },
+        // type: "time",
       },
     },
   };
+
+  // scales: {
+  //   y: {
+  //     title: { display: true, text: "Amount, RM" },
+  //   },
+  //   x: [
+  //     {
+  //       // grid: {
+  //       //   display: true,
+  //       //   drawBorder: true,
+  //       //   drawOnChartArea: true,
+  //       //   drawTicks: true,
+  //       // },
+  //       display: true,
+  //       max: max,
+  //       title: { display: true, text: "Date" },
+  //       type: "time",
+  //       // ticks: {
+  //       //   display: true,
+  //       //   color: "rgb(0,0,0)",
+  //       //   source: "label",
+  //       //   autoSkip: false,
+  //       //   maxTicksLimit: savingsData.length,
+  //       // },
+  //       time: {
+  //         minUnit: "month",
+  //         unit: yearsToGoal > 0 ? "year" : "month",
+  //         unitStepSize: 1,
+  //         displayFormats: {
+  //           millisecond: "dd MMM yy",
+  //           second: "dd MMM yy",
+  //           minute: "dd MMM yy",
+  //           hour: "dd MMM yy",
+  //           day: "dd MMM yy",
+  //           week: "dd MMM yy",
+  //           month: "MMM yy",
+  //           quarter: "dd MMM yy",
+  //           year: "MMM yy",
+  //         },
+  //       },
+  //       // },
+  //     },
+  //   ],
+  // },
 
   return (
     <div>
